@@ -1,0 +1,1003 @@
+{
+  "categories": [
+    {
+      "id": "personal-trainers",
+      "label": "Personal Trainers",
+      "specialtyLabel": "Training goals",
+      "specialties": [
+        "Weight loss",
+        "Injury rehabilitation",
+        "Firming & toning",
+        "Muscle strength",
+        "Cardio & endurance",
+        "Pre / post natal"
+      ]
+    },
+    {
+      "id": "gardeners",
+      "label": "Gardeners",
+      "specialtyLabel": "Services",
+      "specialties": [
+        "Lawn mowing",
+        "Hedge trimming",
+        "Garden design",
+        "Weeding & tidy-up",
+        "Tree surgery",
+        "Planting"
+      ]
+    },
+    {
+      "id": "plumbers",
+      "label": "Plumbers",
+      "specialtyLabel": "Services",
+      "specialties": [
+        "Leak repair",
+        "Blocked drains",
+        "Hot water systems",
+        "Bathroom fit-out",
+        "Gas fitting",
+        "Emergency call-out"
+      ]
+    }
+  ],
+  "professionals": [
+    {
+      "id": "pt-1",
+      "category": "personal-trainers",
+      "name": "Kayle Fitness",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 5,
+      "reviews": 46,
+      "topMatch": true,
+      "location": "Sydney CBD NSW",
+      "distance": 0.8,
+      "hires": 32,
+      "years": 16,
+      "responseMins": 6,
+      "priceVal": 75,
+      "priceUnit": "week",
+      "specialties": [
+        "Weight loss",
+        "Injury rehabilitation",
+        "Firming & toning",
+        "Muscle strength"
+      ],
+      "bio": "Weight-loss and strength coach in Sydney. One-to-one or small group, in-studio or at your home. Beginners always welcome.",
+      "why": [
+        "Specialises in weight loss",
+        "8 reviews mention injury rehab",
+        "0.8 km from you",
+        "Usually replies within 6 minutes"
+      ],
+      "initials": "KF",
+      "color": "#2d7af1"
+    },
+    {
+      "id": "pt-2",
+      "category": "personal-trainers",
+      "name": "Peak Performance Coaching",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 5,
+      "reviews": 47,
+      "topMatch": true,
+      "location": "Surry Hills NSW",
+      "distance": 2,
+      "hires": 41,
+      "years": 15,
+      "responseMins": 22,
+      "priceVal": 90,
+      "priceUnit": "week",
+      "specialties": [
+        "Injury rehabilitation",
+        "Muscle strength",
+        "Weight loss"
+      ],
+      "bio": "15 years coaching athletes and everyday clients across Sydney. I focus on injury rehab and keeping you training consistently.",
+      "why": [
+        "15 years of coaching experience",
+        "Injury rehab is a core service",
+        "Top-rated across 47 reviews"
+      ],
+      "initials": "PP",
+      "color": "#e11d48"
+    },
+    {
+      "id": "pt-3",
+      "category": "personal-trainers",
+      "name": "Sarah Bennett PT",
+      "verified": true,
+      "state": "no-reviews",
+      "rating": null,
+      "reviews": 0,
+      "topMatch": true,
+      "location": "Newtown NSW",
+      "distance": 5.2,
+      "hires": 4,
+      "years": 6,
+      "responseMins": 35,
+      "priceVal": 60,
+      "priceUnit": "session",
+      "specialties": [
+        "Pre / post natal",
+        "Weight loss",
+        "Firming & toning"
+      ],
+      "bio": "Pre and post-natal specialist offering friendly, no-judgement sessions. Every plan is built around your week and your goals.",
+      "why": [
+        "Pre & post-natal specialist",
+        "5.2 km from you",
+        "New to Bark, 6 years in the industry"
+      ],
+      "initials": "SB",
+      "color": "#7c3aed"
+    },
+    {
+      "id": "pt-4",
+      "category": "personal-trainers",
+      "name": "Marcus Lee Training",
+      "verified": true,
+      "state": "no-reviews",
+      "rating": null,
+      "reviews": 0,
+      "topMatch": false,
+      "location": "Bondi NSW",
+      "distance": 6.3,
+      "hires": 4,
+      "years": 9,
+      "responseMins": 120,
+      "priceVal": 55,
+      "priceUnit": "session",
+      "specialties": [
+        "Cardio & endurance",
+        "Weight loss",
+        "Firming & toning"
+      ],
+      "bio": "Boxing and HIIT for fat loss and confidence. High-energy sessions morning and evening across the CBD, all levels welcome.",
+      "why": [
+        "Boxing & HIIT focus for fat loss",
+        "Sessions morning and evening",
+        "9 years in the industry"
+      ],
+      "initials": "ML",
+      "color": "#0891b2"
+    },
+    {
+      "id": "pt-5",
+      "category": "personal-trainers",
+      "name": "Iron Path Fitness",
+      "verified": true,
+      "state": "new",
+      "rating": null,
+      "reviews": 0,
+      "topMatch": true,
+      "location": "Chatswood NSW",
+      "distance": 9.6,
+      "hires": 0,
+      "years": 16,
+      "responseMins": 6,
+      "priceVal": 110,
+      "priceUnit": "week",
+      "specialties": [
+        "Muscle strength",
+        "Weight loss",
+        "Firming & toning"
+      ],
+      "bio": "Strength and conditioning for busy professionals. Structured programming and check-ins so every single session counts.",
+      "why": [
+        "Strength & conditioning specialist",
+        "Fast to respond (6 min)",
+        "New on Bark"
+      ],
+      "initials": "IP",
+      "color": "#334155"
+    },
+    {
+      "id": "pt-6",
+      "category": "personal-trainers",
+      "name": "Coastline Coaching",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.8,
+      "reviews": 31,
+      "topMatch": false,
+      "location": "Parramatta NSW",
+      "distance": 21.8,
+      "hires": 18,
+      "years": 8,
+      "responseMins": 45,
+      "priceVal": 45,
+      "priceUnit": "session",
+      "specialties": [
+        "Cardio & endurance",
+        "Injury rehabilitation"
+      ],
+      "bio": "Outdoor and beach sessions across the Eastern Suburbs. Focus on mobility, movement quality and long-term consistency.",
+      "why": [
+        "Mobility and movement focus",
+        "4.8 across 31 reviews",
+        "Outdoor sessions"
+      ],
+      "initials": "CC",
+      "color": "#059669"
+    },
+    {
+      "id": "pt-7",
+      "category": "personal-trainers",
+      "name": "James Okoro PT",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.6,
+      "reviews": 22,
+      "topMatch": false,
+      "location": "Sydney CBD NSW",
+      "distance": 0.8,
+      "hires": 15,
+      "years": 11,
+      "responseMins": 90,
+      "priceVal": 50,
+      "priceUnit": "session",
+      "specialties": [
+        "Injury rehabilitation",
+        "Muscle strength"
+      ],
+      "bio": "Ex-rugby S&C coach. Rebuild strength after injury and learn to move pain-free, at a pace that genuinely suits you.",
+      "why": [
+        "Ex-rugby strength coach",
+        "Injury rehab specialist",
+        "4.6 across 22 reviews"
+      ],
+      "initials": "JO",
+      "color": "#b45309"
+    },
+    {
+      "id": "pt-8",
+      "category": "personal-trainers",
+      "name": "Elevate Studio",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.9,
+      "reviews": 64,
+      "topMatch": true,
+      "location": "Surry Hills NSW",
+      "distance": 2,
+      "hires": 52,
+      "years": 7,
+      "responseMins": 12,
+      "priceVal": 120,
+      "priceUnit": "week",
+      "specialties": [
+        "Firming & toning",
+        "Weight loss",
+        "Muscle strength"
+      ],
+      "bio": "Boutique studio with personalised programming and nutrition guidance. Small groups and one-to-one, online or in person.",
+      "why": [
+        "4.9 across 64 reviews",
+        "Nutrition guidance included",
+        "2 km from you"
+      ],
+      "initials": "ES",
+      "color": "#db2777"
+    },
+    {
+      "id": "gd-1",
+      "category": "gardeners",
+      "name": "GreenThumb Gardens",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.9,
+      "reviews": 58,
+      "topMatch": true,
+      "location": "Newtown NSW",
+      "distance": 5.2,
+      "hires": 74,
+      "years": 12,
+      "responseMins": 15,
+      "priceVal": 45,
+      "priceUnit": "hour",
+      "specialties": [
+        "Lawn mowing",
+        "Hedge trimming",
+        "Weeding & tidy-up",
+        "Planting"
+      ],
+      "bio": "Full-service garden care across Sydney. Regular maintenance, one-off tidy-ups and seasonal planting. Fully insured.",
+      "why": [
+        "Full garden maintenance service",
+        "4.9 across 58 reviews",
+        "5.2 km from you"
+      ],
+      "initials": "GT",
+      "color": "#16a34a"
+    },
+    {
+      "id": "gd-2",
+      "category": "gardeners",
+      "name": "Oakleaf Landscapes",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 5,
+      "reviews": 33,
+      "topMatch": true,
+      "location": "Bondi NSW",
+      "distance": 6.3,
+      "hires": 29,
+      "years": 18,
+      "responseMins": 40,
+      "priceVal": 65,
+      "priceUnit": "hour",
+      "specialties": [
+        "Garden design",
+        "Planting",
+        "Tree surgery"
+      ],
+      "bio": "Design-led landscaping and planting. We plan, build and plant gardens that stay beautiful with minimal upkeep.",
+      "why": [
+        "Design-led landscaping",
+        "18 years experience",
+        "Top-rated across 33 reviews"
+      ],
+      "initials": "OL",
+      "color": "#0d9488"
+    },
+    {
+      "id": "gd-3",
+      "category": "gardeners",
+      "name": "Tom's Lawn Care",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.7,
+      "reviews": 41,
+      "topMatch": false,
+      "location": "Chatswood NSW",
+      "distance": 9.6,
+      "hires": 38,
+      "years": 7,
+      "responseMins": 20,
+      "priceVal": 35,
+      "priceUnit": "hour",
+      "specialties": [
+        "Lawn mowing",
+        "Weeding & tidy-up"
+      ],
+      "bio": "Reliable weekly and fortnightly lawn mowing and edging. Clean finish every time, green-waste taken away.",
+      "why": [
+        "Regular lawn mowing",
+        "Quick to respond (20 min)",
+        "4.7 across 41 reviews"
+      ],
+      "initials": "TL",
+      "color": "#65a30d"
+    },
+    {
+      "id": "gd-4",
+      "category": "gardeners",
+      "name": "Fern & Fig Gardening",
+      "verified": true,
+      "state": "no-reviews",
+      "rating": null,
+      "reviews": 0,
+      "topMatch": true,
+      "location": "Parramatta NSW",
+      "distance": 21.8,
+      "hires": 3,
+      "years": 5,
+      "responseMins": 55,
+      "priceVal": 50,
+      "priceUnit": "hour",
+      "specialties": [
+        "Planting",
+        "Garden design",
+        "Weeding & tidy-up"
+      ],
+      "bio": "Small-garden and courtyard specialist. Native planting, pots and low-water designs for city spaces.",
+      "why": [
+        "Small-garden specialist",
+        "Native, low-water planting",
+        "New to Bark, 5 years' experience"
+      ],
+      "initials": "FF",
+      "color": "#4d7c0f"
+    },
+    {
+      "id": "gd-5",
+      "category": "gardeners",
+      "name": "Sydney Tree & Hedge",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.8,
+      "reviews": 27,
+      "topMatch": false,
+      "location": "Sydney CBD NSW",
+      "distance": 0.8,
+      "hires": 22,
+      "years": 14,
+      "responseMins": 70,
+      "priceVal": 80,
+      "priceUnit": "hour",
+      "specialties": [
+        "Tree surgery",
+        "Hedge trimming"
+      ],
+      "bio": "Qualified arborists for tree removal, pruning and large hedge work. Fully insured, all green waste removed.",
+      "why": [
+        "Qualified arborists",
+        "Tree and large-hedge specialist",
+        "4.8 across 27 reviews"
+      ],
+      "initials": "ST",
+      "color": "#166534"
+    },
+    {
+      "id": "gd-6",
+      "category": "gardeners",
+      "name": "Mia's Garden Services",
+      "verified": true,
+      "state": "new",
+      "rating": null,
+      "reviews": 0,
+      "topMatch": false,
+      "location": "Surry Hills NSW",
+      "distance": 2,
+      "hires": 0,
+      "years": 4,
+      "responseMins": 25,
+      "priceVal": 40,
+      "priceUnit": "hour",
+      "specialties": [
+        "Weeding & tidy-up",
+        "Lawn mowing",
+        "Planting"
+      ],
+      "bio": "Friendly, thorough garden tidy-ups and ongoing maintenance. Great with overgrown gardens and rentals.",
+      "why": [
+        "Great with overgrown gardens",
+        "Fast to respond (25 min)",
+        "New on Bark"
+      ],
+      "initials": "MG",
+      "color": "#15803d"
+    },
+    {
+      "id": "gd-7",
+      "category": "gardeners",
+      "name": "Harbour Landscaping Co",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.9,
+      "reviews": 89,
+      "topMatch": true,
+      "location": "Newtown NSW",
+      "distance": 5.2,
+      "hires": 96,
+      "years": 20,
+      "responseMins": 30,
+      "priceVal": 70,
+      "priceUnit": "hour",
+      "specialties": [
+        "Garden design",
+        "Tree surgery",
+        "Hedge trimming",
+        "Planting"
+      ],
+      "bio": "Established landscaping firm for full garden transformations, decking and irrigation. Design to maintenance.",
+      "why": [
+        "20 years, 96 hires on Bark",
+        "Full transformations",
+        "4.9 across 89 reviews"
+      ],
+      "initials": "HL",
+      "color": "#047857"
+    },
+    {
+      "id": "pt-9",
+      "category": "personal-trainers",
+      "name": "Ella Fitzgerald PT",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.7,
+      "reviews": 28,
+      "topMatch": false,
+      "location": "Bondi NSW",
+      "distance": 6.3,
+      "hires": 20,
+      "years": 9,
+      "responseMins": 30,
+      "priceVal": 58,
+      "priceUnit": "session",
+      "specialties": [
+        "Firming & toning",
+        "Cardio & endurance",
+        "Weight loss"
+      ],
+      "bio": "Toning and cardio-focused sessions with a friendly, sustainable approach. Great for getting back into a routine.",
+      "why": [
+        "Toning and cardio focus",
+        "9 years experience",
+        "4.7 across 28 reviews"
+      ],
+      "initials": "EF",
+      "color": "#9333ea"
+    },
+    {
+      "id": "pt-10",
+      "category": "personal-trainers",
+      "name": "Titan Strength Co",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.9,
+      "reviews": 51,
+      "topMatch": true,
+      "location": "Chatswood NSW",
+      "distance": 9.6,
+      "hires": 47,
+      "years": 13,
+      "responseMins": 18,
+      "priceVal": 95,
+      "priceUnit": "week",
+      "specialties": [
+        "Muscle strength",
+        "Weight loss",
+        "Injury rehabilitation"
+      ],
+      "bio": "Serious strength coaching in a private gym. Powerlifting, hypertrophy and safe progressive overload.",
+      "why": [
+        "Strength and powerlifting specialist",
+        "13 years experience",
+        "4.9 across 51 reviews"
+      ],
+      "initials": "TS",
+      "color": "#1e293b"
+    },
+    {
+      "id": "pt-11",
+      "category": "personal-trainers",
+      "name": "Bounce Kids Fitness",
+      "verified": true,
+      "state": "no-reviews",
+      "rating": null,
+      "reviews": 0,
+      "topMatch": false,
+      "location": "Parramatta NSW",
+      "distance": 21.8,
+      "hires": 2,
+      "years": 5,
+      "responseMins": 60,
+      "priceVal": 45,
+      "priceUnit": "session",
+      "specialties": [
+        "Cardio & endurance",
+        "Firming & toning"
+      ],
+      "bio": "Fun, active fitness for kids and teens. Building confidence, coordination and healthy habits early.",
+      "why": [
+        "Kids and teens specialist",
+        "5 years experience",
+        "New to Bark"
+      ],
+      "initials": "BK",
+      "color": "#f97316"
+    },
+    {
+      "id": "pt-12",
+      "category": "personal-trainers",
+      "name": "Coco Pilates",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 5,
+      "reviews": 38,
+      "topMatch": true,
+      "location": "Sydney CBD NSW",
+      "distance": 0.8,
+      "hires": 33,
+      "years": 10,
+      "responseMins": 14,
+      "priceVal": 70,
+      "priceUnit": "week",
+      "specialties": [
+        "Pre / post natal",
+        "Injury rehabilitation",
+        "Firming & toning"
+      ],
+      "bio": "Reformer and mat Pilates, online or in-studio. Especially good for posture, core and post-natal recovery.",
+      "why": [
+        "Pilates and post-natal focus",
+        "Available online",
+        "5.0 across 38 reviews"
+      ],
+      "initials": "CP",
+      "color": "#0ea5e9"
+    },
+    {
+      "id": "pt-13",
+      "category": "personal-trainers",
+      "name": "RunWith Dan",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.6,
+      "reviews": 19,
+      "topMatch": false,
+      "location": "Surry Hills NSW",
+      "distance": 2,
+      "hires": 12,
+      "years": 7,
+      "responseMins": 50,
+      "priceVal": 48,
+      "priceUnit": "session",
+      "specialties": [
+        "Cardio & endurance",
+        "Weight loss"
+      ],
+      "bio": "Running coach for 5k to marathon. Structured plans, gait work and race-day pacing for every level.",
+      "why": [
+        "Running and endurance coach",
+        "7 years experience",
+        "4.6 across 19 reviews"
+      ],
+      "initials": "RD",
+      "color": "#0d9488"
+    },
+    {
+      "id": "pt-14",
+      "category": "personal-trainers",
+      "name": "Apex Athletic",
+      "verified": true,
+      "state": "new",
+      "rating": null,
+      "reviews": 0,
+      "topMatch": true,
+      "location": "Newtown NSW",
+      "distance": 5.2,
+      "hires": 0,
+      "years": 12,
+      "responseMins": 9,
+      "priceVal": 100,
+      "priceUnit": "week",
+      "specialties": [
+        "Muscle strength",
+        "Injury rehabilitation",
+        "Cardio & endurance"
+      ],
+      "bio": "Athletic performance and return-to-sport training. Ex-elite S&C staff, now taking private clients.",
+      "why": [
+        "Athletic performance specialist",
+        "12 years experience",
+        "New on Bark"
+      ],
+      "initials": "AA",
+      "color": "#4338ca"
+    },
+    {
+      "id": "pt-15",
+      "category": "personal-trainers",
+      "name": "Zen Movement",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.8,
+      "reviews": 44,
+      "topMatch": false,
+      "location": "Bondi NSW",
+      "distance": 6.3,
+      "hires": 36,
+      "years": 11,
+      "responseMins": 40,
+      "priceVal": 52,
+      "priceUnit": "session",
+      "specialties": [
+        "Injury rehabilitation",
+        "Pre / post natal",
+        "Firming & toning"
+      ],
+      "bio": "Mobility, breathwork and gentle strength. Ideal if you want to move better and train pain-free.",
+      "why": [
+        "Mobility and rehab focus",
+        "11 years experience",
+        "4.8 across 44 reviews"
+      ],
+      "initials": "ZM",
+      "color": "#14b8a6"
+    },
+    {
+      "id": "pt-16",
+      "category": "personal-trainers",
+      "name": "BoxFit Sydney",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.5,
+      "reviews": 33,
+      "topMatch": false,
+      "location": "Chatswood NSW",
+      "distance": 9.6,
+      "hires": 28,
+      "years": 8,
+      "responseMins": 25,
+      "priceVal": 40,
+      "priceUnit": "session",
+      "specialties": [
+        "Cardio & endurance",
+        "Weight loss",
+        "Firming & toning"
+      ],
+      "bio": "Boxing-based conditioning classes and 1-to-1. Burn fat, build fitness and blow off some steam.",
+      "why": [
+        "Boxing conditioning",
+        "8 years experience",
+        "4.5 across 33 reviews"
+      ],
+      "initials": "BX",
+      "color": "#dc2626"
+    },
+    {
+      "id": "gd-8",
+      "category": "gardeners",
+      "name": "Bloom & Bud",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.8,
+      "reviews": 47,
+      "topMatch": false,
+      "location": "Parramatta NSW",
+      "distance": 21.8,
+      "hires": 40,
+      "years": 9,
+      "responseMins": 25,
+      "priceVal": 48,
+      "priceUnit": "hour",
+      "specialties": [
+        "Planting",
+        "Weeding & tidy-up",
+        "Garden design"
+      ],
+      "bio": "Seasonal planting, flower beds and courtyard makeovers. Lovely results for small and medium gardens.",
+      "why": [
+        "Planting and beds specialist",
+        "9 years experience",
+        "4.8 across 47 reviews"
+      ],
+      "initials": "BB",
+      "color": "#65a30d"
+    },
+    {
+      "id": "gd-9",
+      "category": "gardeners",
+      "name": "Wildscape Gardens",
+      "verified": true,
+      "state": "no-reviews",
+      "rating": null,
+      "reviews": 0,
+      "topMatch": false,
+      "location": "Sydney CBD NSW",
+      "distance": 0.8,
+      "hires": 3,
+      "years": 6,
+      "responseMins": 45,
+      "priceVal": 55,
+      "priceUnit": "hour",
+      "specialties": [
+        "Garden design",
+        "Planting",
+        "Tree surgery"
+      ],
+      "bio": "Native and low-maintenance garden design. Habitat planting, rockeries and water-wise layouts.",
+      "why": [
+        "Native garden design",
+        "6 years experience",
+        "New to Bark"
+      ],
+      "initials": "WG",
+      "color": "#16a34a"
+    },
+    {
+      "id": "gd-10",
+      "category": "gardeners",
+      "name": "Neat Lawns Sydney",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.6,
+      "reviews": 52,
+      "topMatch": false,
+      "location": "Surry Hills NSW",
+      "distance": 2,
+      "hires": 61,
+      "years": 6,
+      "responseMins": 18,
+      "priceVal": 38,
+      "priceUnit": "hour",
+      "specialties": [
+        "Lawn mowing",
+        "Weeding & tidy-up",
+        "Hedge trimming"
+      ],
+      "bio": "Fast, tidy lawn mowing, edging and hedge trims on a schedule that suits you. Green waste removed.",
+      "why": [
+        "Reliable lawn and hedge care",
+        "Quick to respond (18 min)",
+        "4.6 across 52 reviews"
+      ],
+      "initials": "NL",
+      "color": "#4d7c0f"
+    },
+    {
+      "id": "gd-11",
+      "category": "gardeners",
+      "name": "Terra Firma Landscaping",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 5,
+      "reviews": 41,
+      "topMatch": true,
+      "location": "Newtown NSW",
+      "distance": 5.2,
+      "hires": 34,
+      "years": 16,
+      "responseMins": 35,
+      "priceVal": 75,
+      "priceUnit": "hour",
+      "specialties": [
+        "Garden design",
+        "Tree surgery",
+        "Planting",
+        "Hedge trimming"
+      ],
+      "bio": "Complete landscape construction: paving, retaining walls, turf and planting. Design through to build.",
+      "why": [
+        "Full landscape construction",
+        "16 years experience",
+        "5.0 across 41 reviews"
+      ],
+      "initials": "TF",
+      "color": "#166534"
+    },
+    {
+      "id": "gd-12",
+      "category": "gardeners",
+      "name": "Cutting Hedge",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.7,
+      "reviews": 24,
+      "topMatch": false,
+      "location": "Bondi NSW",
+      "distance": 6.3,
+      "hires": 19,
+      "years": 8,
+      "responseMins": 55,
+      "priceVal": 60,
+      "priceUnit": "hour",
+      "specialties": [
+        "Hedge trimming",
+        "Tree surgery"
+      ],
+      "bio": "Precision hedge shaping and small tree work. Straight lines, clean finish, all clippings taken away.",
+      "why": [
+        "Hedge and tree specialist",
+        "8 years experience",
+        "4.7 across 24 reviews"
+      ],
+      "initials": "CH",
+      "color": "#15803d"
+    },
+    {
+      "id": "gd-13",
+      "category": "gardeners",
+      "name": "Petal & Pot",
+      "verified": true,
+      "state": "new",
+      "rating": null,
+      "reviews": 0,
+      "topMatch": false,
+      "location": "Chatswood NSW",
+      "distance": 9.6,
+      "hires": 0,
+      "years": 4,
+      "responseMins": 22,
+      "priceVal": 42,
+      "priceUnit": "hour",
+      "specialties": [
+        "Planting",
+        "Weeding & tidy-up"
+      ],
+      "bio": "Balcony and courtyard planting for renters and small spaces. Pots, herbs and easy-care greenery.",
+      "why": [
+        "Balcony and small-space planting",
+        "4 years experience",
+        "New on Bark"
+      ],
+      "initials": "PP",
+      "color": "#059669"
+    },
+    {
+      "id": "gd-14",
+      "category": "gardeners",
+      "name": "Evergreen Maintenance",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.9,
+      "reviews": 73,
+      "topMatch": true,
+      "location": "Parramatta NSW",
+      "distance": 21.8,
+      "hires": 80,
+      "years": 15,
+      "responseMins": 20,
+      "priceVal": 50,
+      "priceUnit": "hour",
+      "specialties": [
+        "Lawn mowing",
+        "Hedge trimming",
+        "Weeding & tidy-up",
+        "Planting"
+      ],
+      "bio": "Ongoing garden maintenance packages for homes and strata. One team, everything kept in shape year-round.",
+      "why": [
+        "Full maintenance packages",
+        "15 years experience",
+        "4.9 across 73 reviews"
+      ],
+      "initials": "EM",
+      "color": "#047857"
+    },
+    {
+      "id": "gd-15",
+      "category": "gardeners",
+      "name": "Urban Roots",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.8,
+      "reviews": 36,
+      "topMatch": false,
+      "location": "Sydney CBD NSW",
+      "distance": 0.8,
+      "hires": 27,
+      "years": 10,
+      "responseMins": 40,
+      "priceVal": 65,
+      "priceUnit": "hour",
+      "specialties": [
+        "Garden design",
+        "Planting",
+        "Weeding & tidy-up"
+      ],
+      "bio": "Edible gardens, raised beds and productive planting. Grow-your-own designs that actually get harvested.",
+      "why": [
+        "Edible and productive gardens",
+        "10 years experience",
+        "4.8 across 36 reviews"
+      ],
+      "initials": "UR",
+      "color": "#0d9488"
+    },
+    {
+      "id": "gd-16",
+      "category": "gardeners",
+      "name": "Sam's Garden Help",
+      "verified": true,
+      "state": "reviewed",
+      "rating": 4.5,
+      "reviews": 29,
+      "topMatch": false,
+      "location": "Surry Hills NSW",
+      "distance": 2,
+      "hires": 22,
+      "years": 5,
+      "responseMins": 30,
+      "priceVal": 35,
+      "priceUnit": "hour",
+      "specialties": [
+        "Weeding & tidy-up",
+        "Lawn mowing",
+        "Planting"
+      ],
+      "bio": "Friendly all-round garden help for overgrown yards and one-off clean-ups. Great value, no job too small.",
+      "why": [
+        "Great for overgrown clean-ups",
+        "5 years experience",
+        "4.5 across 29 reviews"
+      ],
+      "initials": "SG",
+      "color": "#84cc16"
+    }
+  ]
+}
