@@ -88,7 +88,7 @@ export function ProCard({ pro }: { pro: Pro }) {
         {pro.hires > 0 && (
           <span className="flex items-center gap-1.5"><Users className="h-4 w-4 text-[#2d7af1]" />{pro.hires} hires on Bark</span>
         )}
-        <span className="flex items-center gap-1.5"><Briefcase className="h-4 w-4 text-[#2d7af1]" />{pro.years} years experience</span>
+        <span className="flex items-center gap-1.5"><Briefcase className="h-4 w-4 text-[#2d7af1]" />{pro.years} years in business</span>
         <span className="flex items-center gap-1.5"><Clock className="h-4 w-4 text-[#2d7af1]" />{pro.responseMins} min response time</span>
       </div>
 
