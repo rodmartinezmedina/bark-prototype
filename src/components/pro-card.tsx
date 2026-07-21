@@ -30,7 +30,8 @@ export function ProCard({ pro }: { pro: Pro }) {
     <button className="text-[#2d7af1] text-sm font-medium">View profile</button>
   );
   const sendMessage = (
-    <button className="w-full bg-[#2d7af1]/10 text-[#2d7af1] text-sm font-medium rounded-lg py-2 flex items-center justify-center gap-1.5">
+    // per Figma: text-only button, no background fill (only Request quote gets the light bg)
+    <button className="w-full text-[#2d7af1] text-sm font-medium rounded-lg py-2 flex items-center justify-center gap-1.5">
       <MessageSquare className="h-4 w-4" fill="currentColor" stroke="white" strokeWidth={1.5} /> Send message
     </button>
   );
