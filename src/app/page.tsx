@@ -53,6 +53,8 @@ export default function Home() {
   const [sort, setSort] = useState("best");
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
   const [sheetOpen, setSheetOpen] = useState(false);
+  // zero state: nothing is shown until the user actually runs a search
+  const [searched, setSearched] = useState(false);
   const toggleSection = (k: string) =>
     setCollapsed((s) => {
       const n = new Set(s);
@@ -75,13 +77,24 @@ export default function Home() {
     setCategoryId(draftCategory);
     setLocation(draftLocation);
     setSpecs([]); setPrice(null); setRating("any"); setResp("any"); setDist(null);
+    setSearched(true);
   };
-  // reset the search bar to defaults and send the user back up to run it themselves.
-  // deliberately does NOT execute a search (no setCategoryId) — auto-running one here
-  // looks like the app searched by itself, which is misleading in a demo.
+  // quick-start from the zero state: pick a category and search it directly
+  const searchFor = (catId: string) => {
+    setDraftCategory(catId);
+    setDraftLocation(LOCATIONS[0]);
+    setCategoryId(catId);
+    setLocation(LOCATIONS[0]);
+    setSpecs([]); setPrice(null); setRating("any"); setResp("any"); setDist(null);
+    setSearched(true);
+  };
+  // back to the zero state with the search bar reset. deliberately does NOT
+  // execute a search — auto-running one here looks like the app searched by
+  // itself, which is misleading in a demo.
   const tryNewSearch = () => {
     setDraftCategory(DB.categories[0].id);
     setDraftLocation(LOCATIONS[0]);
+    setSearched(false);
     window.scrollTo(0, 0);
   };
   const clearFilters = () => {
@@ -226,7 +239,9 @@ export default function Home() {
       {/* hero */}
       <div style={{ background: "#8891a8" }}>
         <div className="max-w-6xl mx-auto px-5 py-8 text-center">
-          <h1 className="text-xl sm:text-2xl font-bold text-white mb-4">Find top-rated {category.label} near you</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-white mb-4">
+            Find top-rated {searched ? category.label : "professionals"} near you
+          </h1>
           <div className="flex flex-col sm:flex-row gap-2 max-w-2xl mx-auto">
             <div className="flex-1 bg-white rounded-lg px-3 flex items-center gap-2">
               <Search className="h-4 w-4 text-slate-400 shrink-0" />
@@ -245,7 +260,35 @@ export default function Home() {
         </div>
       </div>
 
+      {/* zero state: no search has run yet */}
+      {!searched && (
+        <div className="max-w-6xl mx-auto px-5 py-6">
+          <div className="bg-white rounded-2xl border border-slate-100 px-8 py-14 text-center">
+            <div className="mx-auto mb-4 h-12 w-12 rounded-full bg-[#2d7af1]/10 flex items-center justify-center">
+              <Search className="h-5 w-5 text-[#2d7af1]" />
+            </div>
+            <div className="text-lg font-semibold text-[#111637] mb-1">Start your search</div>
+            <p className="text-slate-500 text-sm max-w-md mx-auto">
+              Choose a service and a location above, then hit Search to see professionals near you.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+              <span className="text-slate-500 text-sm">Popular:</span>
+              {DB.categories.map((c) => (
+                <button
+                  key={c.id}
+                  onClick={() => searchFor(c.id)}
+                  className="px-3.5 py-1.5 rounded-full text-sm border border-slate-200 bg-white text-[#111637] hover:border-slate-300 transition"
+                >
+                  {c.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* body */}
+      {searched && (
       <div className="max-w-6xl mx-auto px-5 py-6 flex gap-6 items-start">
         {/* sidebar — desktop only */}
         <aside className="hidden lg:block w-[300px] shrink-0 bg-white rounded-2xl border border-slate-100 px-5 pb-4 sticky top-4">
@@ -347,6 +390,7 @@ export default function Home() {
           )}
         </main>
       </div>
+      )}
 
       {/* mobile filter sheet */}
       {sheetOpen && (
