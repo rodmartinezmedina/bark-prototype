@@ -127,4 +127,10 @@
   html {
     @apply font-sans;
   }
+  /* Tailwind v4 preflight sets buttons to cursor:default; restore pointer on interactive elements */
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  select {
+    cursor: pointer;
+  }
 }
