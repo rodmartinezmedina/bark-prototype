@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { Search, MapPin, X, ChevronDown } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { Search, MapPin, X, ChevronDown, SlidersHorizontal } from "lucide-react";
 import data from "@/data/professionals.json";
 import type { Data, Pro } from "@/lib/types";
 import { ProCard } from "@/components/pro-card";
@@ -52,12 +52,19 @@ export default function Home() {
   const [specs, setSpecs] = useState<string[]>([]);
   const [sort, setSort] = useState("best");
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
+  const [sheetOpen, setSheetOpen] = useState(false);
   const toggleSection = (k: string) =>
     setCollapsed((s) => {
       const n = new Set(s);
       if (n.has(k)) n.delete(k); else n.add(k);
       return n;
     });
+
+  // lock background scroll while the mobile filter sheet is open
+  useEffect(() => {
+    document.body.style.overflow = sheetOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [sheetOpen]);
 
   const category = DB.categories.find((c) => c.id === categoryId)!;
   const pool = DB.professionals.filter(
@@ -69,12 +76,13 @@ export default function Home() {
     setLocation(draftLocation);
     setSpecs([]); setPrice(null); setRating("any"); setResp("any"); setDist(null);
   };
+  // reset the search bar to defaults and send the user back up to run it themselves.
+  // deliberately does NOT execute a search (no setCategoryId) — auto-running one here
+  // looks like the app searched by itself, which is misleading in a demo.
   const tryNewSearch = () => {
     setDraftCategory(DB.categories[0].id);
-    setCategoryId(DB.categories[0].id);
     setDraftLocation(LOCATIONS[0]);
-    setLocation(LOCATIONS[0]);
-    setSpecs([]); setPrice(null); setRating("any"); setResp("any"); setDist(null);
+    window.scrollTo(0, 0);
   };
   const clearFilters = () => {
     setPrice(null); setRating("any"); setResp("any"); setDist(null); setSpecs([]);
@@ -107,11 +115,17 @@ export default function Home() {
     return arr;
   }, [results, sort]);
 
-  // closest matches for empty states: category pool if it has pros, else nearest overall
-  const closest = useMemo(() => {
-    const base = pool.length ? pool : DB.professionals;
-    return [...base].sort((a, b) => a.distance - b.distance).slice(0, 3);
-  }, [pool]);
+  // closest matches for the empty state: always the SAME category, nearest first,
+  // ignoring filters/location. never suggest another category (no gardeners for a
+  // plumber search) — an empty category simply has no closest matches to show.
+  const closest = useMemo(
+    () =>
+      DB.professionals
+        .filter((p) => p.category === categoryId)
+        .sort((a, b) => a.distance - b.distance)
+        .slice(0, 3),
+    [categoryId]
+  );
 
   const chips: { id: string; l: string; clr: () => void }[] = [];
   if (price) chips.push({ id: "p", l: PRICE.find((x) => x.k === price)!.l, clr: () => setPrice(null) });
@@ -150,6 +164,53 @@ export default function Home() {
     );
   };
 
+  // shared filter controls, rendered in both the desktop sidebar and the mobile sheet
+  const filterBody = (
+    <>
+      <FilterSection id="price" title="Price" value={price ? PRICE.find((x) => x.k === price)!.l : "Any"}>
+        <div className="flex flex-wrap gap-2">{PRICE.map((p) => <Pill key={p.k} active={price === p.k} onClick={() => setPrice(price === p.k ? null : p.k)}>{p.l}</Pill>)}</div>
+      </FilterSection>
+      <FilterSection id="rating" title="Rating" value={rating !== "any" ? RATING.find((x) => x.k === rating)!.l : "Any"}>
+        <div className="flex flex-wrap gap-2">{RATING.map((r) => <Pill key={r.k} active={rating === r.k} onClick={() => setRating(r.k)}>{r.l}</Pill>)}</div>
+      </FilterSection>
+      <FilterSection id="resp" title="Response time" value={resp !== "any" ? RESP.find((x) => x.k === resp)!.l : "Any"}>
+        <div className="flex flex-wrap gap-2">{RESP.map((r) => <Pill key={r.k} active={resp === r.k} onClick={() => setResp(r.k)}>{r.l}</Pill>)}</div>
+      </FilterSection>
+      <FilterSection id="dist" title="Distance" value={dist ? DIST.find((x) => x.k === dist)!.l : "Any"}>
+        <div className="flex flex-wrap gap-2">{DIST.map((d) => <Pill key={d.k} active={dist === d.k} onClick={() => setDist(dist === d.k ? null : d.k)}>{d.l}</Pill>)}</div>
+      </FilterSection>
+
+      {/* clear divider between universal and category-specific filters */}
+      <div className="-mx-5 h-2.5 bg-slate-100 mt-1" />
+
+      <div className="pt-4">
+        <div className="text-[12px] font-bold tracking-wider text-slate-500 mb-1">{category.label.toUpperCase()} FILTERS</div>
+        <div className="py-4">
+          <button onClick={() => toggleSection("spec")} className="w-full flex items-center justify-between">
+            <span className="font-semibold text-[#111637] text-[15px]">
+              {category.specialtyLabel}
+              {specs.length > 0 && <span className="text-[#2d7af1] font-medium"> · {specs.length}</span>}
+            </span>
+            <ChevronDown className={"h-4 w-4 text-slate-400 transition " + (!collapsed.has("spec") ? "" : "-rotate-90")} />
+          </button>
+          {!collapsed.has("spec") && (
+            <div className="space-y-1 mt-3">
+              {category.specialties.map((s) => (
+                <label key={s} className="flex items-center gap-2.5 py-1 cursor-pointer text-[15px] text-[#111637]">
+                  <span className={"h-5 w-5 rounded border flex items-center justify-center shrink-0 " + (specs.includes(s) ? "bg-[#2d7af1] border-[#2d7af1]" : "border-slate-300 bg-white")}>
+                    {specs.includes(s) && <span className="text-white text-xs">✓</span>}
+                  </span>
+                  <input type="checkbox" className="hidden" checked={specs.includes(s)} onChange={() => toggleSpec(s)} />
+                  {s}
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  );
+
   const locationLabel = location === LOCATIONS[0] ? "Sydney, NSW" : location;
 
   return (
@@ -165,16 +226,16 @@ export default function Home() {
       {/* hero */}
       <div style={{ background: "#8891a8" }}>
         <div className="max-w-6xl mx-auto px-5 py-8 text-center">
-          <h1 className="text-2xl font-bold text-white mb-4">Find top-rated {category.label} near you</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-white mb-4">Find top-rated {category.label} near you</h1>
           <div className="flex flex-col sm:flex-row gap-2 max-w-2xl mx-auto">
             <div className="flex-1 bg-white rounded-lg px-3 flex items-center gap-2">
-              <Search className="h-4 w-4 text-slate-400" />
+              <Search className="h-4 w-4 text-slate-400 shrink-0" />
               <select value={draftCategory} onChange={(e) => setDraftCategory(e.target.value)} className="flex-1 py-2.5 text-sm bg-transparent outline-none text-[#111637]">
                 {DB.categories.map((c) => (<option key={c.id} value={c.id}>{c.label}</option>))}
               </select>
             </div>
             <div className="flex-1 bg-white rounded-lg px-3 flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-slate-400" />
+              <MapPin className="h-4 w-4 text-slate-400 shrink-0" />
               <select value={draftLocation} onChange={(e) => setDraftLocation(e.target.value)} className="flex-1 py-2.5 text-sm bg-transparent outline-none text-[#111637]">
                 {LOCATIONS.map((l) => (<option key={l} value={l}>{l}</option>))}
               </select>
@@ -186,75 +247,37 @@ export default function Home() {
 
       {/* body */}
       <div className="max-w-6xl mx-auto px-5 py-6 flex gap-6 items-start">
-        {/* sidebar */}
-        <aside className="w-[300px] shrink-0 bg-white rounded-2xl border border-slate-100 px-5 pb-4 sticky top-4">
+        {/* sidebar — desktop only */}
+        <aside className="hidden lg:block w-[300px] shrink-0 bg-white rounded-2xl border border-slate-100 px-5 pb-4 sticky top-4">
           <div className="flex items-center justify-between pt-4 pb-1">
             <span className="text-[13px] font-bold tracking-wider text-slate-500">FILTERS</span>
             <button onClick={clearFilters} className="text-[#2d7af1] text-sm font-medium">Clear all</button>
           </div>
-          <FilterSection id="price" title="Price" value={price ? PRICE.find((x) => x.k === price)!.l : "Any"}>
-            <div className="flex flex-wrap gap-2">{PRICE.map((p) => <Pill key={p.k} active={price === p.k} onClick={() => setPrice(price === p.k ? null : p.k)}>{p.l}</Pill>)}</div>
-          </FilterSection>
-          <FilterSection id="rating" title="Rating" value={rating !== "any" ? RATING.find((x) => x.k === rating)!.l : "Any"}>
-            <div className="flex flex-wrap gap-2">{RATING.map((r) => <Pill key={r.k} active={rating === r.k} onClick={() => setRating(r.k)}>{r.l}</Pill>)}</div>
-          </FilterSection>
-          <FilterSection id="resp" title="Response time" value={resp !== "any" ? RESP.find((x) => x.k === resp)!.l : "Any"}>
-            <div className="flex flex-wrap gap-2">{RESP.map((r) => <Pill key={r.k} active={resp === r.k} onClick={() => setResp(r.k)}>{r.l}</Pill>)}</div>
-          </FilterSection>
-          <FilterSection id="dist" title="Distance" value={dist ? DIST.find((x) => x.k === dist)!.l : "Any"}>
-            <div className="flex flex-wrap gap-2">{DIST.map((d) => <Pill key={d.k} active={dist === d.k} onClick={() => setDist(dist === d.k ? null : d.k)}>{d.l}</Pill>)}</div>
-          </FilterSection>
-
-          {/* clear divider between universal and category-specific filters */}
-          <div className="-mx-5 h-2.5 bg-slate-100 mt-1" />
-
-          <div className="pt-4">
-            <div className="text-[12px] font-bold tracking-wider text-slate-500 mb-1">{category.label.toUpperCase()} FILTERS</div>
-            <div className="py-4">
-              <button onClick={() => toggleSection("spec")} className="w-full flex items-center justify-between">
-                <span className="font-semibold text-[#111637] text-[15px]">
-                  {category.specialtyLabel}
-                  {specs.length > 0 && <span className="text-[#2d7af1] font-medium"> · {specs.length}</span>}
-                </span>
-                <ChevronDown className={"h-4 w-4 text-slate-400 transition " + (!collapsed.has("spec") ? "" : "-rotate-90")} />
-              </button>
-              {!collapsed.has("spec") && (
-                <div className="space-y-1 mt-3">
-                  {category.specialties.map((s) => (
-                    <label key={s} className="flex items-center gap-2.5 py-1 cursor-pointer text-[15px] text-[#111637]">
-                      <span className={"h-5 w-5 rounded border flex items-center justify-center shrink-0 " + (specs.includes(s) ? "bg-[#2d7af1] border-[#2d7af1]" : "border-slate-300 bg-white")}>
-                        {specs.includes(s) && <span className="text-white text-xs">✓</span>}
-                      </span>
-                      <input type="checkbox" className="hidden" checked={specs.includes(s)} onChange={() => toggleSpec(s)} />
-                      {s}
-                    </label>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
+          {filterBody}
         </aside>
 
         {/* results */}
         <main className="flex-1 min-w-0">
           {banner && (
-            <div className="rounded-2xl p-5 mb-5 flex items-center gap-4 overflow-hidden"
+            <div className="relative rounded-2xl p-5 mb-5 flex flex-col sm:flex-row sm:items-center gap-4 overflow-hidden"
               style={{ background: "linear-gradient(110deg,#0e122e,#312e81 60%,#2d5fd4)" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/banner.png" alt="" className="h-14 w-14 shrink-0 object-contain" />
-              <div className="flex-1">
-                <div className="text-[11px] font-bold tracking-wider text-indigo-200">RECOMMENDED</div>
-                <div className="text-white font-semibold">Answer a few questions, get up to 5 tailored quotes</div>
-                <div className="text-indigo-200 text-sm">Matched to exactly what you need</div>
+              <div className="flex items-start sm:items-center gap-4 flex-1">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/banner.png" alt="" className="h-12 w-12 sm:h-14 sm:w-14 shrink-0 object-contain" />
+                <div className="pr-6 sm:pr-0">
+                  <div className="text-[11px] font-bold tracking-wider text-indigo-200">RECOMMENDED</div>
+                  <div className="text-white font-semibold">Answer a few questions, get up to 5 tailored quotes</div>
+                  <div className="text-indigo-200 text-sm">Matched to exactly what you need</div>
+                </div>
               </div>
-              <button className="bg-white text-[#2d7af1] font-semibold px-4 py-2.5 rounded-xl text-sm">Get tailored quotes</button>
-              <button onClick={() => setBanner(false)} className="ml-10 self-start text-white/70 hover:text-white"><X className="h-5 w-5" /></button>
+              <button className="bg-white text-[#2d7af1] font-semibold px-4 py-2.5 rounded-xl text-sm w-full sm:w-auto shrink-0">Get tailored quotes</button>
+              <button onClick={() => setBanner(false)} className="absolute top-3 right-3 sm:static sm:ml-6 sm:self-start text-white/70 hover:text-white"><X className="h-5 w-5" /></button>
             </div>
           )}
 
-          <div className="flex items-start justify-between mb-3 gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
             <div>
-              <h2 className="text-xl font-bold text-[#111637]">
+              <h2 className="text-lg sm:text-xl font-bold text-[#111637]">
                 {results.length === 0
                   ? "0 results for your search"
                   : results.length === pool.length
@@ -267,15 +290,23 @@ export default function Home() {
                   : "Top matches are selected by AI based on your request and their expertise"}
               </p>
             </div>
-            <div className="relative shrink-0">
-              <select
-                value={sort}
-                onChange={(e) => setSort(e.target.value)}
-                className="appearance-none text-sm text-[#111637] border border-slate-200 rounded-lg pl-3.5 pr-10 py-2 bg-white outline-none cursor-pointer"
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                onClick={() => setSheetOpen(true)}
+                className="lg:hidden flex items-center gap-1.5 text-sm text-[#111637] border border-slate-200 rounded-lg px-3.5 py-2 bg-white"
               >
-                {SORTS.map((s) => (<option key={s.k} value={s.k}>Sort by: {s.l}</option>))}
-              </select>
-              <ChevronDown className="h-4 w-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <SlidersHorizontal className="h-4 w-4" /> Filters{chips.length > 0 && ` (${chips.length})`}
+              </button>
+              <div className="relative">
+                <select
+                  value={sort}
+                  onChange={(e) => setSort(e.target.value)}
+                  className="appearance-none text-sm text-[#111637] border border-slate-200 rounded-lg pl-3.5 pr-10 py-2 bg-white outline-none cursor-pointer"
+                >
+                  {SORTS.map((s) => (<option key={s.k} value={s.k}>Sort by: {s.l}</option>))}
+                </select>
+                <ChevronDown className="h-4 w-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+              </div>
             </div>
           </div>
 
@@ -316,6 +347,30 @@ export default function Home() {
           )}
         </main>
       </div>
+
+      {/* mobile filter sheet */}
+      {sheetOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <div className="absolute inset-0 bg-black/40" onClick={() => setSheetOpen(false)} />
+          <div className="absolute inset-x-0 bottom-0 max-h-[88vh] bg-white rounded-t-2xl flex flex-col">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+              <span className="text-base font-bold text-[#111637]">Filters</span>
+              <div className="flex items-center gap-4">
+                <button onClick={clearFilters} className="text-[#2d7af1] text-sm font-medium">Clear all</button>
+                <button onClick={() => setSheetOpen(false)} className="text-slate-400 hover:text-slate-600"><X className="h-5 w-5" /></button>
+              </div>
+            </div>
+            <div className="overflow-y-auto px-5 flex-1">
+              {filterBody}
+            </div>
+            <div className="px-5 py-4 border-t border-slate-100">
+              <button onClick={() => setSheetOpen(false)} className="w-full bg-[#2d7af1] text-white font-medium py-3 rounded-xl">
+                Show {results.length} {results.length === 1 ? "result" : "results"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
