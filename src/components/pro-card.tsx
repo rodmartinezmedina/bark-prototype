@@ -42,41 +42,49 @@ export function ProCard({ pro }: { pro: Pro }) {
     </button>
   );
 
-  // name / rating / location — sits beside the avatar at every width
+  // Layout 2 (per Figma card components): name + rating on line 1, location on line 2,
+  // status badges on line 3. Rating wraps under the name on narrow (mobile) widths.
+  const showBadgeRow = pro.state !== "reviewed" || pro.topMatch;
   const header = (
     <div className="flex items-start justify-between gap-3">
-      <div>
-        <div className="flex items-center gap-1.5">
-          <span className="font-medium text-[#111637] text-[17px]">{pro.name}</span>
-          {pro.verified && <BadgeCheck className="h-[18px] w-[18px] text-[#2d7af1]" fill="#2d7af1" stroke="white" />}
-        </div>
-        {/* stacked on mobile (per Figma mobile card), inline row on sm+ */}
-        <div className="flex flex-col items-start gap-1.5 sm:flex-row sm:items-center sm:gap-2 sm:flex-wrap mt-1">
-          {pro.state === "reviewed" && pro.rating !== null ? (
+      <div className="min-w-0">
+        {/* line 1: name (+ verified) with the rating inline for reviewed pros */}
+        <div className="flex items-center gap-x-2 gap-y-1 flex-wrap">
+          <span className="flex items-center gap-1.5">
+            <span className="font-medium text-[#111637] text-[17px]">{pro.name}</span>
+            {pro.verified && <BadgeCheck className="h-[18px] w-[18px] text-[#2d7af1] shrink-0" fill="#2d7af1" stroke="white" />}
+          </span>
+          {pro.state === "reviewed" && pro.rating !== null && (
             <span className="flex items-center gap-1">
               <Stars rating={pro.rating} />
               <span className="font-semibold text-[#111637] text-sm">{pro.rating.toFixed(1)}</span>
               <span className="text-slate-500 text-sm">({pro.reviews})</span>
             </span>
-          ) : pro.state === "new" ? (
-            <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-[#f8fbd1] text-[#3b416d]">
-              <Rocket className="h-3.5 w-3.5" fill="currentColor" strokeWidth={1.5} /> New on Bark
-            </span>
-          ) : (
-            <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-[#f3f4fb] text-[#3b416d]">
-              <Star className="h-3.5 w-3.5" fill="currentColor" strokeWidth={1.5} /> No reviews yet
-            </span>
-          )}
-          {pro.topMatch && (
-            <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-[#e0ffc2] text-[#3b416d]">
-              <Flame className="h-3.5 w-3.5" fill="currentColor" strokeWidth={1.5} /> Top Match
-            </span>
           )}
         </div>
+        {/* line 2: location (pin hidden on mobile per Figma; navy on desktop) */}
         <div className="flex items-center gap-1 text-slate-500 text-sm mt-1">
-          {/* pin hidden on mobile per Figma mobile card; navy on desktop */}
           <MapPin className="hidden sm:block h-4 w-4 text-[#1d234f] shrink-0" /> {pro.location} · {pro.distance} km
         </div>
+        {/* line 3: status badges */}
+        {showBadgeRow && (
+          <div className="flex items-center gap-2 mt-2 flex-wrap">
+            {pro.state === "new" ? (
+              <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-[#f8fbd1] text-[#3b416d]">
+                <Rocket className="h-3.5 w-3.5" fill="currentColor" strokeWidth={1.5} /> New on Bark
+              </span>
+            ) : pro.state !== "reviewed" ? (
+              <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-[#f3f4fb] text-[#3b416d]">
+                <Star className="h-3.5 w-3.5" fill="currentColor" strokeWidth={1.5} /> No reviews yet
+              </span>
+            ) : null}
+            {pro.topMatch && (
+              <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-[#e0ffc2] text-[#3b416d]">
+                <Flame className="h-3.5 w-3.5" fill="currentColor" strokeWidth={1.5} /> Top Match
+              </span>
+            )}
+          </div>
+        )}
       </div>
       <div className="text-right shrink-0">
         {pro.priceVal !== null ? (
