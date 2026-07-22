@@ -59,16 +59,16 @@ export function ProCard({ pro }: { pro: Pro }) {
               <span className="text-slate-500 text-sm">({pro.reviews})</span>
             </span>
           ) : pro.state === "new" ? (
-            <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-[#fbf3c5] text-[#1d234f]">
+            <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-[#f8fbd1] text-[#3b416d]">
               <Rocket className="h-3.5 w-3.5" fill="currentColor" strokeWidth={1.5} /> New on Bark
             </span>
           ) : (
-            <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-[#eef0f4] text-[#3b416d]">
+            <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-[#f3f4fb] text-[#3b416d]">
               <Star className="h-3.5 w-3.5" fill="currentColor" strokeWidth={1.5} /> No reviews yet
             </span>
           )}
           {pro.topMatch && (
-            <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-[#e9ecf5] text-[#1d234f]">
+            <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-[#e0ffc2] text-[#3b416d]">
               <Flame className="h-3.5 w-3.5" fill="currentColor" strokeWidth={1.5} /> Top Match
             </span>
           )}
@@ -85,8 +85,8 @@ export function ProCard({ pro }: { pro: Pro }) {
             <span className="text-slate-500 text-sm">/{pro.priceUnit}</span>
           </>
         ) : (
-          <span className="flex items-center gap-1.5 text-[#111637] font-medium">
-            <CircleDollarSign className="h-5 w-5 shrink-0" fill="#1d234f" stroke="white" strokeWidth={1.5} /> On demand
+          <span className="flex items-center gap-1.5 text-[#3b416d] font-medium">
+            <CircleDollarSign className="h-5 w-5 shrink-0" fill="currentColor" stroke="white" strokeWidth={1.5} /> On demand
           </span>
         )}
       </div>

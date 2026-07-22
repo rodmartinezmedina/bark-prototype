@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <rect width="512" height="512" rx="96" fill="#0f172a"/>
-  <text x="256" y="222" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="220" fill="#38bdf8" text-anchor="middle" dominant-baseline="middle" letter-spacing="-4">V</text>
-  <g transform="translate(210.0 378.0) scale(3.833)" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5" />
+  <g transform="translate(131.0 85.0) scale(10.417)" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5" />
   <circle cx="5.5" cy="17.5" r="3.5" />
   <circle cx="15" cy="5" r="1" />
   <path d="M12 17.5V14l-3-3 4-3 2 3h2" /></g>
+  <text x="256" y="400" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="66" fill="#38bdf8" text-anchor="middle" dominant-baseline="middle" letter-spacing="2">VERTEX</text>
 </svg>
