@@ -4,6 +4,7 @@ import { useState } from "react";
 import {
   MapPin, Users, Briefcase, Clock, Check, Sparkles,
   MessageSquare, ChevronDown, Star, BadgeCheck, Flame, Rocket, CircleDollarSign,
+  Video, CircleUserRound,
 } from "lucide-react";
 import type { Pro } from "@/lib/types";
 
@@ -46,10 +47,11 @@ export function ProCard({ pro }: { pro: Pro }) {
     <div className="flex items-start justify-between gap-3">
       <div>
         <div className="flex items-center gap-1.5">
-          <span className="font-bold text-[#111637] text-[17px]">{pro.name}</span>
+          <span className="font-medium text-[#111637] text-[17px]">{pro.name}</span>
           {pro.verified && <BadgeCheck className="h-[18px] w-[18px] text-[#2d7af1]" fill="#2d7af1" stroke="white" />}
         </div>
-        <div className="flex items-center gap-2 mt-1 flex-wrap">
+        {/* stacked on mobile (per Figma mobile card), inline row on sm+ */}
+        <div className="flex flex-col items-start gap-1.5 sm:flex-row sm:items-center sm:gap-2 sm:flex-wrap mt-1">
           {pro.state === "reviewed" && pro.rating !== null ? (
             <span className="flex items-center gap-1">
               <Stars rating={pro.rating} />
@@ -76,8 +78,16 @@ export function ProCard({ pro }: { pro: Pro }) {
         </div>
       </div>
       <div className="text-right shrink-0">
-        <span className="text-xl font-bold text-[#111637]">${pro.priceVal}</span>
-        <span className="text-slate-500 text-sm">/{pro.priceUnit}</span>
+        {pro.priceVal !== null ? (
+          <>
+            <span className="text-xl font-medium text-[#111637]">${pro.priceVal}</span>
+            <span className="text-slate-500 text-sm">/{pro.priceUnit}</span>
+          </>
+        ) : (
+          <span className="flex items-center gap-1.5 text-[#111637] font-medium">
+            <CircleDollarSign className="h-5 w-5 shrink-0" fill="#1d234f" stroke="white" strokeWidth={1.5} /> On demand
+          </span>
+        )}
       </div>
     </div>
   );
@@ -145,11 +155,20 @@ export function ProCard({ pro }: { pro: Pro }) {
       <div className="flex gap-4 sm:gap-5">
         {/* avatar rail — carries the CTAs on desktop only */}
         <div className="w-16 sm:w-[132px] shrink-0 flex flex-col items-center">
-          <div
-            className="h-16 w-16 sm:h-[104px] sm:w-[104px] rounded-xl flex items-center justify-center text-white text-lg sm:text-2xl font-bold"
-            style={{ background: pro.color }}
-          >
-            {pro.initials}
+          <div className="relative h-16 w-16 sm:h-[104px] sm:w-[104px]">
+            {pro.photo ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={pro.photo} alt="" className="h-full w-full rounded-xl object-cover" />
+            ) : (
+              <div className="h-full w-full rounded-xl bg-slate-200 flex items-center justify-center">
+                <CircleUserRound className="h-9 w-9 sm:h-14 sm:w-14 text-[#3b416d]" strokeWidth={1.5} />
+              </div>
+            )}
+            {pro.online && (
+              <span className="absolute bottom-1 right-1 rounded-md sm:rounded-lg bg-white/90 p-1 sm:p-1.5 flex items-center justify-center shadow-sm">
+                <Video className="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="#1d234f" stroke="#1d234f" strokeWidth={1.5} />
+              </span>
+            )}
           </div>
           <div className="hidden sm:flex sm:flex-col sm:items-center w-full">
             <div className="mt-3">{viewProfile}</div>
@@ -167,15 +186,12 @@ export function ProCard({ pro }: { pro: Pro }) {
         </div>
       </div>
 
-      {/* mobile: full-width content + CTAs below the header row */}
+      {/* mobile: full-width content + CTAs below the header row (no View profile, per Figma mobile card) */}
       <div className="sm:hidden">
         {content}
-        <div className="mt-4 flex flex-col gap-2.5">
-          <div className="grid grid-cols-2 gap-2.5">
-            {sendMessage}
-            {requestQuote}
-          </div>
-          <div className="text-center">{viewProfile}</div>
+        <div className="mt-4 grid grid-cols-2 gap-2.5">
+          {sendMessage}
+          {requestQuote}
         </div>
       </div>
     </div>

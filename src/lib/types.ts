@@ -21,8 +21,10 @@ export type Pro = {
   hires: number;
   years: number;
   responseMins: number;
-  priceVal: number;
+  priceVal: number | null;
   priceUnit: string;
+  online: boolean;
+  photo: string | null;
   specialties: string[];
   bio: string;
   why: string[];

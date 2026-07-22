@@ -11,10 +11,10 @@ const DB = data as Data;
 const LOCATIONS = ["All of Sydney", ...Array.from(new Set(DB.professionals.map((p) => p.location)))];
 
 const PRICE = [
-  { k: "u40", l: "Under $40", t: (p: Pro) => p.priceVal < 40 },
-  { k: "40-60", l: "$40–60", t: (p: Pro) => p.priceVal >= 40 && p.priceVal <= 60 },
-  { k: "60-100", l: "$60–100", t: (p: Pro) => p.priceVal > 60 && p.priceVal <= 100 },
-  { k: "100", l: "$100+", t: (p: Pro) => p.priceVal > 100 },
+  { k: "u40", l: "Under $40", t: (p: Pro) => p.priceVal !== null && p.priceVal < 40 },
+  { k: "40-60", l: "$40–60", t: (p: Pro) => p.priceVal !== null && p.priceVal >= 40 && p.priceVal <= 60 },
+  { k: "60-100", l: "$60–100", t: (p: Pro) => p.priceVal !== null && p.priceVal > 60 && p.priceVal <= 100 },
+  { k: "100", l: "$100+", t: (p: Pro) => p.priceVal !== null && p.priceVal > 100 },
 ];
 const RATING = [
   { k: "any", l: "Any", v: 0 },
@@ -49,6 +49,7 @@ export default function Home() {
   const [rating, setRating] = useState("any");
   const [resp, setResp] = useState("any");
   const [dist, setDist] = useState<string | null>(null);
+  const [onlineOnly, setOnlineOnly] = useState(false);
   const [specs, setSpecs] = useState<string[]>([]);
   const [sort, setSort] = useState("best");
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
@@ -76,7 +77,7 @@ export default function Home() {
   const runSearch = () => {
     setCategoryId(draftCategory);
     setLocation(draftLocation);
-    setSpecs([]); setPrice(null); setRating("any"); setResp("any"); setDist(null);
+    setSpecs([]); setPrice(null); setRating("any"); setResp("any"); setDist(null); setOnlineOnly(false);
     setSearched(true);
   };
   // quick-start from the zero state: pick a category and search it directly
@@ -85,7 +86,7 @@ export default function Home() {
     setDraftLocation(LOCATIONS[0]);
     setCategoryId(catId);
     setLocation(LOCATIONS[0]);
-    setSpecs([]); setPrice(null); setRating("any"); setResp("any"); setDist(null);
+    setSpecs([]); setPrice(null); setRating("any"); setResp("any"); setDist(null); setOnlineOnly(false);
     setSearched(true);
   };
   // back to the zero state with the search bar reset. deliberately does NOT
@@ -98,7 +99,7 @@ export default function Home() {
     window.scrollTo(0, 0);
   };
   const clearFilters = () => {
-    setPrice(null); setRating("any"); setResp("any"); setDist(null); setSpecs([]);
+    setPrice(null); setRating("any"); setResp("any"); setDist(null); setSpecs([]); setOnlineOnly(false);
   };
   const toggleSpec = (s: string) =>
     setSpecs((v) => (v.includes(s) ? v.filter((x) => x !== s) : [...v, s]));
@@ -106,14 +107,15 @@ export default function Home() {
   const results = useMemo(
     () =>
       pool.filter((p) => {
-        if (price) { const b = PRICE.find((x) => x.k === price); if (b && !b.t(p)) return false; }
+        if (price) { if (p.priceVal === null) return false; const b = PRICE.find((x) => x.k === price); if (b && !b.t(p)) return false; }
         if (rating !== "any") { const v = RATING.find((x) => x.k === rating)!.v; if (p.rating === null || p.rating < v) return false; }
         if (resp !== "any") { const v = RESP.find((x) => x.k === resp)!.v; if (p.responseMins > v) return false; }
         if (dist) { const v = DIST.find((x) => x.k === dist)!.v; if (p.distance > v) return false; }
+        if (onlineOnly && !p.online) return false;
         if (specs.length && !specs.some((s) => p.specialties.includes(s))) return false;
         return true;
       }),
-    [pool, price, rating, resp, dist, specs]
+    [pool, price, rating, resp, dist, onlineOnly, specs]
   );
 
   const sorted = useMemo(() => {
@@ -145,6 +147,7 @@ export default function Home() {
   if (rating !== "any") chips.push({ id: "r", l: RATING.find((x) => x.k === rating)!.l + " rating", clr: () => setRating("any") });
   if (resp !== "any") chips.push({ id: "rt", l: RESP.find((x) => x.k === resp)!.l, clr: () => setResp("any") });
   if (dist) chips.push({ id: "d", l: "Within " + DIST.find((x) => x.k === dist)!.l, clr: () => setDist(null) });
+  if (onlineOnly) chips.push({ id: "on", l: "Online sessions", clr: () => setOnlineOnly(false) });
   specs.forEach((s) => chips.push({ id: "s" + s, l: s, clr: () => toggleSpec(s) }));
 
   const Pill = ({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) => (
@@ -191,6 +194,12 @@ export default function Home() {
       </FilterSection>
       <FilterSection id="dist" title="Distance" value={dist ? DIST.find((x) => x.k === dist)!.l : "Any"}>
         <div className="flex flex-wrap gap-2">{DIST.map((d) => <Pill key={d.k} active={dist === d.k} onClick={() => setDist(dist === d.k ? null : d.k)}>{d.l}</Pill>)}</div>
+      </FilterSection>
+      <FilterSection id="online" title="Online sessions" value={onlineOnly ? "Online" : "Any"}>
+        <div className="flex flex-wrap gap-2">
+          <Pill active={!onlineOnly} onClick={() => setOnlineOnly(false)}>Any</Pill>
+          <Pill active={onlineOnly} onClick={() => setOnlineOnly(true)}>Online available</Pill>
+        </div>
       </FilterSection>
 
       {/* clear divider between universal and category-specific filters */}

@@ -71,7 +71,9 @@
         "Usually replies within 6 minutes"
       ],
       "initials": "KF",
-      "color": "#2d7af1"
+      "color": "#2d7af1",
+      "online": true,
+      "photo": "/avatars/av-9.jpg"
     },
     {
       "id": "pt-2",
@@ -101,7 +103,9 @@
         "Top-rated across 47 reviews"
       ],
       "initials": "PP",
-      "color": "#e11d48"
+      "color": "#e11d48",
+      "online": true,
+      "photo": "/avatars/av-12.jpg"
     },
     {
       "id": "pt-3",
@@ -131,7 +135,9 @@
         "New to Bark, 6 years in the industry"
       ],
       "initials": "SB",
-      "color": "#7c3aed"
+      "color": "#7c3aed",
+      "online": true,
+      "photo": "/avatars/av-5.jpg"
     },
     {
       "id": "pt-4",
@@ -147,7 +153,7 @@
       "hires": 4,
       "years": 9,
       "responseMins": 120,
-      "priceVal": 55,
+      "priceVal": null,
       "priceUnit": "session",
       "specialties": [
         "Cardio & endurance",
@@ -161,7 +167,9 @@
         "9 years in the industry"
       ],
       "initials": "ML",
-      "color": "#0891b2"
+      "color": "#0891b2",
+      "online": false,
+      "photo": "/avatars/av-21.jpg"
     },
     {
       "id": "pt-5",
@@ -177,7 +185,7 @@
       "hires": 0,
       "years": 16,
       "responseMins": 6,
-      "priceVal": 110,
+      "priceVal": null,
       "priceUnit": "week",
       "specialties": [
         "Muscle strength",
@@ -191,7 +199,9 @@
         "New on Bark"
       ],
       "initials": "IP",
-      "color": "#334155"
+      "color": "#334155",
+      "online": false,
+      "photo": null
     },
     {
       "id": "pt-6",
@@ -220,7 +230,9 @@
         "Outdoor sessions"
       ],
       "initials": "CC",
-      "color": "#059669"
+      "color": "#059669",
+      "online": true,
+      "photo": "/avatars/av-19.jpg"
     },
     {
       "id": "pt-7",
@@ -249,7 +261,9 @@
         "4.6 across 22 reviews"
       ],
       "initials": "JO",
-      "color": "#b45309"
+      "color": "#b45309",
+      "online": false,
+      "photo": "/avatars/av-13.jpg"
     },
     {
       "id": "pt-8",
@@ -279,7 +293,9 @@
         "2 km from you"
       ],
       "initials": "ES",
-      "color": "#db2777"
+      "color": "#db2777",
+      "online": false,
+      "photo": "/avatars/av-14.jpg"
     },
     {
       "id": "gd-1",
@@ -310,7 +326,9 @@
         "5.2 km from you"
       ],
       "initials": "GT",
-      "color": "#16a34a"
+      "color": "#16a34a",
+      "online": false,
+      "photo": "/avatars/av-8.jpg"
     },
     {
       "id": "gd-2",
@@ -340,7 +358,9 @@
         "Top-rated across 33 reviews"
       ],
       "initials": "OL",
-      "color": "#0d9488"
+      "color": "#0d9488",
+      "online": false,
+      "photo": "/avatars/av-1.jpg"
     },
     {
       "id": "gd-3",
@@ -369,7 +389,9 @@
         "4.7 across 41 reviews"
       ],
       "initials": "TL",
-      "color": "#65a30d"
+      "color": "#65a30d",
+      "online": false,
+      "photo": "/avatars/av-4.jpg"
     },
     {
       "id": "gd-4",
@@ -399,7 +421,9 @@
         "New to Bark, 5 years' experience"
       ],
       "initials": "FF",
-      "color": "#4d7c0f"
+      "color": "#4d7c0f",
+      "online": true,
+      "photo": null
     },
     {
       "id": "gd-5",
@@ -428,7 +452,9 @@
         "4.8 across 27 reviews"
       ],
       "initials": "ST",
-      "color": "#166534"
+      "color": "#166534",
+      "online": false,
+      "photo": "/avatars/av-15.jpg"
     },
     {
       "id": "gd-6",
@@ -458,7 +484,9 @@
         "New on Bark"
       ],
       "initials": "MG",
-      "color": "#15803d"
+      "color": "#15803d",
+      "online": false,
+      "photo": null
     },
     {
       "id": "gd-7",
@@ -489,7 +517,9 @@
         "4.9 across 89 reviews"
       ],
       "initials": "HL",
-      "color": "#047857"
+      "color": "#047857",
+      "online": false,
+      "photo": "/avatars/av-22.jpg"
     },
     {
       "id": "pt-9",
@@ -519,7 +549,9 @@
         "4.7 across 28 reviews"
       ],
       "initials": "EF",
-      "color": "#9333ea"
+      "color": "#9333ea",
+      "online": true,
+      "photo": "/avatars/av-20.jpg"
     },
     {
       "id": "pt-10",
@@ -549,7 +581,9 @@
         "4.9 across 51 reviews"
       ],
       "initials": "TS",
-      "color": "#1e293b"
+      "color": "#1e293b",
+      "online": false,
+      "photo": "/avatars/av-18.jpg"
     },
     {
       "id": "pt-11",
@@ -578,7 +612,9 @@
         "New to Bark"
       ],
       "initials": "BK",
-      "color": "#f97316"
+      "color": "#f97316",
+      "online": false,
+      "photo": null
     },
     {
       "id": "pt-12",
@@ -608,7 +644,9 @@
         "5.0 across 38 reviews"
       ],
       "initials": "CP",
-      "color": "#0ea5e9"
+      "color": "#0ea5e9",
+      "online": true,
+      "photo": "/avatars/av-7.jpg"
     },
     {
       "id": "pt-13",
@@ -637,7 +675,9 @@
         "4.6 across 19 reviews"
       ],
       "initials": "RD",
-      "color": "#0d9488"
+      "color": "#0d9488",
+      "online": true,
+      "photo": "/avatars/av-17.jpg"
     },
     {
       "id": "pt-14",
@@ -667,7 +707,9 @@
         "New on Bark"
       ],
       "initials": "AA",
-      "color": "#4338ca"
+      "color": "#4338ca",
+      "online": false,
+      "photo": null
     },
     {
       "id": "pt-15",
@@ -697,23 +739,25 @@
         "4.8 across 44 reviews"
       ],
       "initials": "ZM",
-      "color": "#14b8a6"
+      "color": "#14b8a6",
+      "online": true,
+      "photo": "/avatars/av-3.jpg"
     },
     {
       "id": "pt-16",
       "category": "personal-trainers",
       "name": "BoxFit Sydney",
       "verified": true,
-      "state": "reviewed",
-      "rating": 4.5,
-      "reviews": 33,
+      "state": "new",
+      "rating": null,
+      "reviews": 0,
       "topMatch": false,
       "location": "Chatswood NSW",
       "distance": 9.6,
-      "hires": 28,
+      "hires": 0,
       "years": 8,
       "responseMins": 25,
-      "priceVal": 40,
+      "priceVal": null,
       "priceUnit": "session",
       "specialties": [
         "Cardio & endurance",
@@ -727,7 +771,9 @@
         "4.5 across 33 reviews"
       ],
       "initials": "BX",
-      "color": "#dc2626"
+      "color": "#dc2626",
+      "online": false,
+      "photo": null
     },
     {
       "id": "gd-8",
@@ -757,7 +803,9 @@
         "4.8 across 47 reviews"
       ],
       "initials": "BB",
-      "color": "#65a30d"
+      "color": "#65a30d",
+      "online": false,
+      "photo": "/avatars/av-23.jpg"
     },
     {
       "id": "gd-9",
@@ -773,7 +821,7 @@
       "hires": 3,
       "years": 6,
       "responseMins": 45,
-      "priceVal": 55,
+      "priceVal": null,
       "priceUnit": "hour",
       "specialties": [
         "Garden design",
@@ -787,7 +835,9 @@
         "New to Bark"
       ],
       "initials": "WG",
-      "color": "#16a34a"
+      "color": "#16a34a",
+      "online": false,
+      "photo": null
     },
     {
       "id": "gd-10",
@@ -817,7 +867,9 @@
         "4.6 across 52 reviews"
       ],
       "initials": "NL",
-      "color": "#4d7c0f"
+      "color": "#4d7c0f",
+      "online": false,
+      "photo": "/avatars/av-2.jpg"
     },
     {
       "id": "gd-11",
@@ -848,7 +900,9 @@
         "5.0 across 41 reviews"
       ],
       "initials": "TF",
-      "color": "#166534"
+      "color": "#166534",
+      "online": true,
+      "photo": "/avatars/av-24.jpg"
     },
     {
       "id": "gd-12",
@@ -877,7 +931,9 @@
         "4.7 across 24 reviews"
       ],
       "initials": "CH",
-      "color": "#15803d"
+      "color": "#15803d",
+      "online": false,
+      "photo": "/avatars/av-10.jpg"
     },
     {
       "id": "gd-13",
@@ -893,7 +949,7 @@
       "hires": 0,
       "years": 4,
       "responseMins": 22,
-      "priceVal": 42,
+      "priceVal": null,
       "priceUnit": "hour",
       "specialties": [
         "Planting",
@@ -906,7 +962,9 @@
         "New on Bark"
       ],
       "initials": "PP",
-      "color": "#059669"
+      "color": "#059669",
+      "online": false,
+      "photo": null
     },
     {
       "id": "gd-14",
@@ -937,7 +995,9 @@
         "4.9 across 73 reviews"
       ],
       "initials": "EM",
-      "color": "#047857"
+      "color": "#047857",
+      "online": false,
+      "photo": "/avatars/av-26.jpg"
     },
     {
       "id": "gd-15",
@@ -967,23 +1027,25 @@
         "4.8 across 36 reviews"
       ],
       "initials": "UR",
-      "color": "#0d9488"
+      "color": "#0d9488",
+      "online": false,
+      "photo": null
     },
     {
       "id": "gd-16",
       "category": "gardeners",
       "name": "Sam's Garden Help",
       "verified": true,
-      "state": "reviewed",
-      "rating": 4.5,
-      "reviews": 29,
+      "state": "new",
+      "rating": null,
+      "reviews": 0,
       "topMatch": false,
       "location": "Surry Hills NSW",
       "distance": 2,
-      "hires": 22,
+      "hires": 0,
       "years": 5,
       "responseMins": 30,
-      "priceVal": 35,
+      "priceVal": null,
       "priceUnit": "hour",
       "specialties": [
         "Weeding & tidy-up",
@@ -997,7 +1059,9 @@
         "4.5 across 29 reviews"
       ],
       "initials": "SG",
-      "color": "#84cc16"
+      "color": "#84cc16",
+      "online": false,
+      "photo": null
     }
   ]
 }
