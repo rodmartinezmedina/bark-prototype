@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Search, MapPin, X, ChevronDown, SlidersHorizontal } from "lucide-react";
+import { Search, MapPin, X, ChevronDown, SlidersHorizontal, ArrowUp } from "lucide-react";
 import data from "@/data/professionals.json";
 import type { Data, Pro } from "@/lib/types";
 import { ProCard } from "@/components/pro-card";
@@ -56,6 +56,8 @@ export default function Home() {
   const [sheetOpen, setSheetOpen] = useState(false);
   // zero state: nothing is shown until the user actually runs a search
   const [searched, setSearched] = useState(false);
+  // floating back-to-top button (no pagination, so long lists need a quick way up)
+  const [showTop, setShowTop] = useState(false);
   const toggleSection = (k: string) =>
     setCollapsed((s) => {
       const n = new Set(s);
@@ -68,6 +70,18 @@ export default function Home() {
     document.body.style.overflow = sheetOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [sheetOpen]);
+
+  // show the back-to-top button once the user has scrolled past the hero
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > 500);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // instant jump to top (CSS smooth + rAF animation are both unreliable in some
+  // engines; an instant jump is what solves the "no pagination" scroll-back pain)
+  const scrollToTop = () => { window.scrollTo(0, 0); setShowTop(false); };
 
   const category = DB.categories.find((c) => c.id === categoryId)!;
   const pool = DB.professionals.filter(
@@ -399,6 +413,17 @@ export default function Home() {
           )}
         </main>
       </div>
+      )}
+
+      {/* floating back-to-top (no pagination; long lists need a fast way up) */}
+      {showTop && !sheetOpen && (
+        <button
+          onClick={scrollToTop}
+          aria-label="Back to top"
+          className="fixed bottom-6 right-6 z-40 h-11 w-11 rounded-full bg-white border border-slate-200 shadow-lg flex items-center justify-center text-[#111637] hover:bg-slate-50 transition"
+        >
+          <ArrowUp className="h-5 w-5" />
+        </button>
       )}
 
       {/* mobile filter sheet */}
