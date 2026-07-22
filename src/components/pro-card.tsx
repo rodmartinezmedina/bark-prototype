@@ -74,7 +74,8 @@ export function ProCard({ pro }: { pro: Pro }) {
           )}
         </div>
         <div className="flex items-center gap-1 text-slate-500 text-sm mt-1">
-          <MapPin className="h-4 w-4 text-[#2d7af1] shrink-0" /> {pro.location} · {pro.distance} km
+          {/* pin hidden on mobile per Figma mobile card; navy on desktop */}
+          <MapPin className="hidden sm:block h-4 w-4 text-[#1d234f] shrink-0" /> {pro.location} · {pro.distance} km
         </div>
       </div>
       <div className="text-right shrink-0">
@@ -186,12 +187,15 @@ export function ProCard({ pro }: { pro: Pro }) {
         </div>
       </div>
 
-      {/* mobile: full-width content + CTAs below the header row (no View profile, per Figma mobile card) */}
+      {/* mobile: full-width content + CTAs below the header row */}
       <div className="sm:hidden">
         {content}
-        <div className="mt-4 grid grid-cols-2 gap-2.5">
-          {sendMessage}
-          {requestQuote}
+        <div className="mt-4 flex flex-col gap-2.5">
+          <div className="grid grid-cols-2 gap-2.5">
+            {sendMessage}
+            {requestQuote}
+          </div>
+          <div className="text-center">{viewProfile}</div>
         </div>
       </div>
     </div>
