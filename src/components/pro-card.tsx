@@ -59,12 +59,12 @@ export function ProCard({ pro }: { pro: Pro }) {
               <span className="text-slate-500 text-sm">({pro.reviews})</span>
             </span>
           ) : pro.state === "new" ? (
-            <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-green-100 text-green-700">
+            <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-[#fbf3c5] text-[#1d234f]">
               <Rocket className="h-3.5 w-3.5" fill="currentColor" strokeWidth={1.5} /> New on Bark
             </span>
           ) : (
-            <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 text-[#3b416d]">
-              <Star className="h-3.5 w-3.5" /> No reviews yet
+            <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-[#eef0f4] text-[#3b416d]">
+              <Star className="h-3.5 w-3.5" fill="currentColor" strokeWidth={1.5} /> No reviews yet
             </span>
           )}
           {pro.topMatch && (
