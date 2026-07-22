@@ -300,7 +300,7 @@ export default function Home() {
       {searched && (
       <div className="max-w-6xl mx-auto px-5 py-6 flex gap-6 items-start">
         {/* sidebar — desktop only */}
-        <aside className="hidden lg:block w-[300px] shrink-0 bg-white rounded-2xl border border-slate-100 px-5 pb-4 sticky top-4 max-h-[calc(100vh-2rem)] overflow-y-auto">
+        <aside className="hidden lg:block w-[300px] shrink-0 bg-white rounded-2xl border border-slate-100 px-5 pb-4 sticky top-4 max-h-[calc(100vh-2rem)] overflow-y-auto thin-scrollbar">
           <div className="flex items-center justify-between pt-4 pb-1">
             <span className="text-[13px] font-bold tracking-wider text-slate-500">FILTERS</span>
             <button onClick={clearFilters} className="text-[#2d7af1] text-sm font-medium">Clear all</button>
@@ -413,7 +413,7 @@ export default function Home() {
                 <button onClick={() => setSheetOpen(false)} className="text-slate-400 hover:text-slate-600"><X className="h-5 w-5" /></button>
               </div>
             </div>
-            <div className="overflow-y-auto px-5 flex-1">
+            <div className="overflow-y-auto px-5 flex-1 thin-scrollbar">
               {filterBody}
             </div>
             <div className="px-5 py-4 border-t border-slate-100">

@@ -79,7 +79,7 @@ export function ProCard({ pro }: { pro: Pro }) {
               </span>
             ) : null}
             {pro.topMatch && (
-              <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-[#e0ffc2] text-[#3b416d]">
+              <span className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-[#eff6ff] text-[#3b416d]">
                 <Flame className="h-3.5 w-3.5" fill="currentColor" strokeWidth={1.5} /> Top Match
               </span>
             )}
