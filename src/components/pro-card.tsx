@@ -177,8 +177,17 @@ export function ProCard({ pro }: { pro: Pro }) {
               </div>
             )}
             {pro.online && (
-              <span className="absolute bottom-1 right-1 rounded-md sm:rounded-lg bg-white/90 p-1 sm:p-1.5 flex items-center justify-center shadow-sm">
-                <Video className="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="#1d234f" stroke="#1d234f" strokeWidth={1.5} />
+              /* the icon replaced the old "Available Online" badge, so it explains itself on hover */
+              <span className="group absolute bottom-1 right-1">
+                <span className="rounded-md sm:rounded-lg bg-white/90 p-1 sm:p-1.5 flex items-center justify-center shadow-sm cursor-default">
+                  <Video className="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="#1d234f" stroke="#1d234f" strokeWidth={1.5} />
+                </span>
+                <span
+                  role="tooltip"
+                  className="pointer-events-none absolute bottom-full left-1/2 z-30 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-[#1d234f] px-2 py-1 text-xs font-medium text-white opacity-0 shadow-md transition-opacity duration-150 group-hover:opacity-100"
+                >
+                  Available online
+                </span>
               </span>
             )}
           </div>
