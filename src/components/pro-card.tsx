@@ -128,6 +128,8 @@ export function ProCard({ pro }: { pro: Pro }) {
         </button>
       </p>
 
+      {/* the AI summary justifies why this pro was picked, so it only appears on Top Match */}
+      {pro.topMatch && (
       <div className="mt-4 rounded-xl border border-violet-200 bg-[#eef0fc] overflow-hidden">
         <button onClick={() => setOpen((o) => !o)} className="w-full flex items-center justify-between px-4 py-3">
           <span className="font-medium text-[#6b47d9]">Why this match</span>
@@ -156,6 +158,7 @@ export function ProCard({ pro }: { pro: Pro }) {
           </div>
         )}
       </div>
+      )}
     </>
   );
 
